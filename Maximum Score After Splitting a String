@@ -1,0 +1,29 @@
+class Solution:
+    def maxScore(self, s: str) -> int:
+        zero=[]
+        one=[]
+        zero_c = 0
+        one_c = 0
+        size = len(s)
+
+        for i in range(size):
+            if s[i] == '0':
+                zero_c += 1
+            
+            zero.append(zero_c)
+
+        max = 0
+
+        for i in reversed(range(1, len(s))):
+            if s[i] == '1':
+                one_c += 1
+
+            current_val = zero[i - 1] + one_c
+
+            if current_val >= max:
+                max = current_val
+
+        return max
+
+
+        
